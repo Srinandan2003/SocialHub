@@ -1,24 +1,23 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "./components/layout/Layout";
-import { Button } from "../src/components/ui/button";
-import ProjectsPage from "./pages/ProjectsPage";
-
+import './App.css'
+import  { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './components/ui/accordion'
 function App() {
+ 
+
   return (
     <>
-    <div className="bg-red-500 text-white p-4 m-4 rounded-lg">
-  This should be a red box with white text if Tailwind is working
-</div>
-    <Button/>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route path="projects" element={<ProjectsPage />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+     <div className="p-10">
+      <h1 className="text-3xl font-bold mb-4">ShadCN Accordion Test</h1>
+      <Accordion type="single" collapsible>
+        <AccordionItem value="item-1">
+          <AccordionTrigger>Click to Expand</AccordionTrigger>
+          <AccordionContent>
+            This is the content inside the accordion.
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    </div>
     </>
-  );
+  )
 }
 
-export default App;  
+export default App
