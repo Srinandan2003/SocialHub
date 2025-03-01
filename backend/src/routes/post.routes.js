@@ -7,7 +7,8 @@ import {
     getAllPosts,
     likePost,
     // commentOnPost,
-    searchPosts
+    searchPosts,
+    unlikePost
 } from "../controllers/post.controller.js";
 import authMiddleware from "../middlewares/auth.middleware.js";
 import upload from "../middlewares/upload.middleware.js";
@@ -22,10 +23,8 @@ router.get("/:postId", getPost); // Get a Single Post
 router.put("/:postId", authMiddleware, upload.single("media"), editPost); // Edit Post
 router.delete("/:postId", authMiddleware, deletePost); // Delete Post
 router.post("/:postId/like", authMiddleware, likePost); // Like a Post
-// router.post("/:postId/comment", authMiddleware, commentOnPost); // Add Comment
+router.put("/:postId/unlike", authMiddleware, unlikePost); // Unlike a Post
 
-// for comment user Id, post id, and in query = post Id
-// "text" : "it very good coures",
-// "user" : "67c2e62c21a10ae63ab3ed31",
-// "post" : "67c2f9fc54829becfdc712f3"
+
+
 export default router;

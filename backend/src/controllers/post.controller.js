@@ -102,6 +102,23 @@ export const likePost = async (req, res) => {
         res.status(500).json({ message: "Server Error", error: error.message });
     }
 };
+// unlike (means remove like)
+
+export const unlikePost = async (req, res) => {
+    try {
+        const post = await Post.findById(req.params.postId);
+        if (!post) return res.status(404).json({ message: "Post not found" });
+
+        // Remove the user's like
+        post.likes = post.likes.filter(id => id.toString() !== req.user.id);
+
+        await post.save();
+        res.json(post);
+    } catch (error) {
+        res.status(500).json({ message: "Server Error", error: error.message });
+    }
+};
+
 
 /**
  * @desc Comment on a post

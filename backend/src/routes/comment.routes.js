@@ -9,6 +9,9 @@ router.post("/:postId/comments", authMiddleware, validateComment, addComment); /
 router.delete("/:postId/comments/:commentId", authMiddleware, deleteComment); // Delete comment (Protected)
 router.get("/:postId/comments", getComments); // Get all comments for a post (Public)
 
-
+// for comment user Id, post id, and in query = post Id
+// "text" : "it very good coures",
+// "user" : "67c2e62c21a10ae63ab3ed31",
+// "post" : "67c2f9fc54829becfdc712f3"
 
 export default router;

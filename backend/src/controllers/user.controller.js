@@ -82,3 +82,16 @@ export const editUserProfile = async (req, res) => {
     res.status(500).json({ message: "Server Error", error: error.message });
   }
 };
+
+
+/**
+ * @desc Logout user
+ * @route POST /api/users/logout
+ */
+export const logoutUser = async (req, res) => {
+  try {
+    res.json({ message: "User logged out successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Server Error", error: error.message });
+  }
+};
