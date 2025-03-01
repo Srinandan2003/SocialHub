@@ -1,0 +1,50 @@
+# 💾 Node Modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ⚙️ Environment Variables
+.env
+
+# 🚀 Build Files
+dist/
+build/
+
+# ⚡ Logs
+logs/
+*.log
+logs/*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+debug.log*
+.out
+*.pid
+*.seed
+*.pid.lock
+
+# 🔥 Cache & Temp Files
+.cache/
+.vscode/
+.DS_Store
+*.swp
+*.swo
+*.swn
+*.bak
+*.tmp
+*.temp
+
+# 💻 IDE-Specific Files
+.idea/
+.vscode/
+*.sublime-workspace
+
+# 🚀 Deployment Files
+/.vercel/
+/.netlify/
+
+# ⚡ Docker & Kubernetes
+docker-compose.yml
+.kubernetes/
