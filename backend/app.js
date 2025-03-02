@@ -46,15 +46,15 @@ app.get("/test", (req, res) => {
 // Global Error Handling
 app.use(errorHandler);
 
-//  Handle Unexpected Errors to Prevent Crashes
+// Instead of process.exit(1), consider logging the error without exiting
 process.on("uncaughtException", (err) => {
-  console.error("🔥 Uncaught Exception:", err);
-  process.exit(1);
+  console.error("Uncaught Exception:", err);
+  // process.exit(1); - remove this in serverless environment
 });
 
 process.on("unhandledRejection", (err) => {
-  console.error("🚨 Unhandled Rejection:", err);
-  process.exit(1);
+  console.error("Unhandled Rejection:", err);
+  // process.exit(1); - remove this in serverless environment
 });
 
 export default app;
