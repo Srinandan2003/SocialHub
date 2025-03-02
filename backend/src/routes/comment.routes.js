@@ -1,5 +1,5 @@
 import express from "express";
-import { addComment, deleteComment, getComments } from "../controllers/comment.controller.js";
+import { addComment, deleteComment, getComments, getPostCommentsCount } from "../controllers/comment.controller.js";
 import  authMiddleware  from "../middlewares/auth.middleware.js";
 import { validateComment } from "../middlewares/validation.middleware.js";
 
@@ -8,6 +8,7 @@ const router = express.Router();
 router.post("/:postId/comments", authMiddleware, validateComment, addComment); // Add comment (Protected)
 router.delete("/:postId/comments/:commentId", authMiddleware, deleteComment); // Delete comment (Protected)
 router.get("/:postId/comments", getComments); // Get all comments for a post (Public)
+router.get("/:postId/comments/count", getPostCommentsCount); // Get comment count for a post
 
 // for comment user Id, post id, and in query = post Id
 // "text" : "it very good coures",
