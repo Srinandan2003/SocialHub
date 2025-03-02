@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
@@ -42,6 +43,4 @@ function App() {
       </ThemeProvider>
     </React.StrictMode>
   );
-}
-
-export default App;
+export default App
