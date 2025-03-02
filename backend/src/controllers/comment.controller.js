@@ -96,3 +96,27 @@ export const getComments = async (req, res) => {
         res.status(500).json({ message: "Server Error", error: error.message });
     }
 };
+
+
+/**
+ * @desc Get total count of comments for a specific post
+ * @route GET /api/posts/:postId/comments/count
+ */
+
+export const getPostCommentsCount = async (req, res) => {
+    try {
+        const { postId } = req.params;
+
+        // Validate `postId`
+        if (!mongoose.Types.ObjectId.isValid(postId)) {
+            return res.status(400).json({ message: "Invalid post ID format" });
+        }
+
+        // Get the count of comments for the specific post
+        const count = await Comment.countDocuments({ post: postId });
+
+        res.json({ postId, totalComments: count });
+    } catch (error) {
+        res.status(500).json({ message: "Server Error", error: error.message });
+    }
+};

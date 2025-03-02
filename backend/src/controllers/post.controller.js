@@ -6,23 +6,6 @@ import cloudinary from "../config/cloudinary.js";
  * @desc Create a new post
  * @route POST /api/posts
  */
-// export const createPost = async (req, res) => {
-//     try {
-//         let mediaUrl = null;
-//         if (req.file) {
-//             const result = await cloudinary.uploader.upload(req.file.path, { resource_type: "auto" });
-//             mediaUrl = result.secure_url;
-//         }
-
-//         const post = new Post({ ...req.body, user: req.user.id, image: mediaUrl });
-//         await post.save();
-
-//         res.status(201).json(post);
-//     } catch (error) {
-//         res.status(500).json({ message: "Server Error", error: error.message });
-//     }
-// };
-
 
 export const createPost = async (req, res) => {
     try {
@@ -45,7 +28,6 @@ export const createPost = async (req, res) => {
         res.status(500).json({ message: "Server Error", error: error.message });
     }
 };
-
 
 
 /**
@@ -145,6 +127,22 @@ export const unlikePost = async (req, res) => {
 };
 
 
+/**
+ * @desc Get the like count of a post
+ * @route GET /api/posts/:postId/likes
+ */
+export const getLikeCount = async (req, res) => {
+    try {
+        const post = await Post.findById(req.params.postId);
+        if (!post) return res.status(404).json({ message: "Post not found" });
+
+        res.json({ likesCount: post.likes.length });
+    } catch (error) {
+        res.status(500).json({ message: "Server Error", error: error.message });
+    }
+};
+
+
 // /**
 //  * @desc Search posts by title or category
 //  * @route GET /api/posts/search
@@ -164,6 +162,7 @@ export const unlikePost = async (req, res) => {
 //         res.status(500).json({ message: "Server Error", error: error.message });
 //     }
 // };
+
 
 /**
  * @desc Search posts by title or category

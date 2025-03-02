@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
@@ -10,6 +9,7 @@ import Resource from "./pages/Resource";
 import About from "./pages/About";
 import Explore from "./pages/Explore";
 import FAQ from "./pages/FAQ";
+
 import { Cloudinary } from "@cloudinary/url-gen";
 import { auto } from "@cloudinary/url-gen/actions/resize";
 import { autoGravity } from "@cloudinary/url-gen/qualifiers/gravity";
@@ -43,4 +43,5 @@ function App() {
       </ThemeProvider>
     </React.StrictMode>
   );
+}
 export default App

@@ -6,9 +6,9 @@ import {
     getPost,
     getAllPosts,
     likePost,
-    // commentOnPost,
     searchPosts,
-    unlikePost
+    unlikePost,
+    getLikeCount
 } from "../controllers/post.controller.js";
 import authMiddleware from "../middlewares/auth.middleware.js";
 import upload from "../middlewares/upload.middleware.js";
@@ -24,6 +24,7 @@ router.put("/:postId", authMiddleware, upload.single("media"), editPost); // Edi
 router.delete("/:postId", authMiddleware, deletePost); // Delete Post
 router.post("/:postId/like", authMiddleware, likePost); // Like a Post
 router.put("/:postId/unlike", authMiddleware, unlikePost); // Unlike a Post
+router.get("/:postId/likes", getLikeCount); // Get Like Count of a Post
 
 
 
